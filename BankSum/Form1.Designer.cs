@@ -61,6 +61,11 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.lb1p = new System.Windows.Forms.Label();
+			this.lb2p = new System.Windows.Forms.Label();
+			this.lb5p = new System.Windows.Forms.Label();
+			this.lb10pm = new System.Windows.Forms.Label();
+			this.lb05p = new System.Windows.Forms.Label();
 			this.lbsum_m = new System.Windows.Forms.Label();
 			this.tb05p = new TextBoxAnimation.ClassTBAnimation();
 			this.tb1p = new TextBoxAnimation.ClassTBAnimation();
@@ -68,11 +73,6 @@
 			this.tb5p = new TextBoxAnimation.ClassTBAnimation();
 			this.tb10pm = new TextBoxAnimation.ClassTBAnimation();
 			this.label25 = new System.Windows.Forms.Label();
-			this.lb05p = new System.Windows.Forms.Label();
-			this.lb1p = new System.Windows.Forms.Label();
-			this.lb2p = new System.Windows.Forms.Label();
-			this.lb5p = new System.Windows.Forms.Label();
-			this.lb10pm = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label24 = new System.Windows.Forms.Label();
 			this.label23 = new System.Windows.Forms.Label();
@@ -216,6 +216,7 @@
 			this.tb10pk.TextPreview = "10 рублей";
 			this.tb10pk.UseSystemPasswordChar = false;
 			this.tb10pk.TextChanged += new System.EventHandler(this.tb10pk_TextChanged);
+			this.tb10pk.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb10pk_KeyPress);
 			// 
 			// tb50p
 			// 
@@ -231,6 +232,7 @@
 			this.tb50p.TextPreview = "50 рублей";
 			this.tb50p.UseSystemPasswordChar = false;
 			this.tb50p.TextChanged += new System.EventHandler(this.tb50p_TextChanged);
+			this.tb50p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb50p_KeyPress);
 			// 
 			// tb100p
 			// 
@@ -246,6 +248,7 @@
 			this.tb100p.TextPreview = "100 рублей";
 			this.tb100p.UseSystemPasswordChar = false;
 			this.tb100p.TextChanged += new System.EventHandler(this.tb100p_TextChanged);
+			this.tb100p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb100p_KeyPress);
 			// 
 			// tb200p
 			// 
@@ -261,6 +264,7 @@
 			this.tb200p.TextPreview = "200 рублей";
 			this.tb200p.UseSystemPasswordChar = false;
 			this.tb200p.TextChanged += new System.EventHandler(this.tb200p_TextChanged);
+			this.tb200p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb200p_KeyPress);
 			// 
 			// tb500p
 			// 
@@ -276,6 +280,7 @@
 			this.tb500p.TextPreview = "500 рублей";
 			this.tb500p.UseSystemPasswordChar = false;
 			this.tb500p.TextChanged += new System.EventHandler(this.tb500p_TextChanged);
+			this.tb500p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb500p_KeyPress);
 			// 
 			// tb1000p
 			// 
@@ -291,6 +296,7 @@
 			this.tb1000p.TextPreview = "1000 рублей";
 			this.tb1000p.UseSystemPasswordChar = false;
 			this.tb1000p.TextChanged += new System.EventHandler(this.tb1000p_TextChanged);
+			this.tb1000p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb1000p_KeyPress);
 			// 
 			// tb2000p
 			// 
@@ -306,6 +312,7 @@
 			this.tb2000p.TextPreview = "2000 рублей";
 			this.tb2000p.UseSystemPasswordChar = false;
 			this.tb2000p.TextChanged += new System.EventHandler(this.tb2000p_TextChanged);
+			this.tb2000p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb2000p_KeyPress);
 			// 
 			// tb5000p
 			// 
@@ -321,6 +328,7 @@
 			this.tb5000p.TextPreview = "5000 рублей";
 			this.tb5000p.UseSystemPasswordChar = false;
 			this.tb5000p.TextChanged += new System.EventHandler(this.tb5000p_TextChanged);
+			this.tb5000p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb5000p_KeyPress);
 			// 
 			// tb_trash
 			// 
@@ -394,6 +402,11 @@
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.lb1p);
+			this.groupBox3.Controls.Add(this.lb2p);
+			this.groupBox3.Controls.Add(this.lb5p);
+			this.groupBox3.Controls.Add(this.lb10pm);
+			this.groupBox3.Controls.Add(this.lb05p);
 			this.groupBox3.Controls.Add(this.lbsum_m);
 			this.groupBox3.Controls.Add(this.tb05p);
 			this.groupBox3.Controls.Add(this.tb1p);
@@ -401,11 +414,6 @@
 			this.groupBox3.Controls.Add(this.tb5p);
 			this.groupBox3.Controls.Add(this.tb10pm);
 			this.groupBox3.Controls.Add(this.label25);
-			this.groupBox3.Controls.Add(this.lb05p);
-			this.groupBox3.Controls.Add(this.lb1p);
-			this.groupBox3.Controls.Add(this.lb2p);
-			this.groupBox3.Controls.Add(this.lb5p);
-			this.groupBox3.Controls.Add(this.lb10pm);
 			this.groupBox3.Controls.Add(this.label1);
 			this.groupBox3.Controls.Add(this.label24);
 			this.groupBox3.Controls.Add(this.label23);
@@ -414,6 +422,31 @@
 			resources.ApplyResources(this.groupBox3, "groupBox3");
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.TabStop = false;
+			// 
+			// lb1p
+			// 
+			resources.ApplyResources(this.lb1p, "lb1p");
+			this.lb1p.Name = "lb1p";
+			// 
+			// lb2p
+			// 
+			resources.ApplyResources(this.lb2p, "lb2p");
+			this.lb2p.Name = "lb2p";
+			// 
+			// lb5p
+			// 
+			resources.ApplyResources(this.lb5p, "lb5p");
+			this.lb5p.Name = "lb5p";
+			// 
+			// lb10pm
+			// 
+			resources.ApplyResources(this.lb10pm, "lb10pm");
+			this.lb10pm.Name = "lb10pm";
+			// 
+			// lb05p
+			// 
+			resources.ApplyResources(this.lb05p, "lb05p");
+			this.lb05p.Name = "lb05p";
 			// 
 			// lbsum_m
 			// 
@@ -434,6 +467,7 @@
 			this.tb05p.TextPreview = "50 копеек";
 			this.tb05p.UseSystemPasswordChar = false;
 			this.tb05p.TextChanged += new System.EventHandler(this.tb05p_TextChanged);
+			this.tb05p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb05p_KeyPress);
 			// 
 			// tb1p
 			// 
@@ -448,7 +482,8 @@
 			this.tb1p.TextInput = "";
 			this.tb1p.TextPreview = "1 рубль";
 			this.tb1p.UseSystemPasswordChar = false;
-			this.tb1p.TextChanged += new System.EventHandler(this.tb1p_TextChanged);
+			this.tb1p.TextChanged += new System.EventHandler(this.tb1p_textChanged);
+			this.tb1p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb2p_KeyPress);
 			// 
 			// tb2p
 			// 
@@ -479,6 +514,7 @@
 			this.tb5p.TextPreview = "5 рублей";
 			this.tb5p.UseSystemPasswordChar = false;
 			this.tb5p.TextChanged += new System.EventHandler(this.tb5p_TextChanged);
+			this.tb5p.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb5p_KeyPress);
 			// 
 			// tb10pm
 			// 
@@ -494,37 +530,13 @@
 			this.tb10pm.TextPreview = "10 рублей";
 			this.tb10pm.UseSystemPasswordChar = false;
 			this.tb10pm.TextChanged += new System.EventHandler(this.tb10pm_TextChanged);
+			this.tb10pm.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb10pm_KeyPress);
 			// 
 			// label25
 			// 
 			resources.ApplyResources(this.label25, "label25");
 			this.label25.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.label25.Name = "label25";
-			// 
-			// lb05p
-			// 
-			resources.ApplyResources(this.lb05p, "lb05p");
-			this.lb05p.Name = "lb05p";
-			// 
-			// lb1p
-			// 
-			resources.ApplyResources(this.lb1p, "lb1p");
-			this.lb1p.Name = "lb1p";
-			// 
-			// lb2p
-			// 
-			resources.ApplyResources(this.lb2p, "lb2p");
-			this.lb2p.Name = "lb2p";
-			// 
-			// lb5p
-			// 
-			resources.ApplyResources(this.lb5p, "lb5p");
-			this.lb5p.Name = "lb5p";
-			// 
-			// lb10pm
-			// 
-			resources.ApplyResources(this.lb10pm, "lb10pm");
-			this.lb10pm.Name = "lb10pm";
 			// 
 			// label1
 			// 

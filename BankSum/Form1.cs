@@ -42,62 +42,153 @@ namespace BankSum
 			{
 			// Снятие фокуа с первого верхнего TextBox при старте программы и перенос его на PictureBox - лого ROSGP
 			this.ActiveControl = pictureBox1;
-			}
+		}
 
 		// Расчет количества КУПЮР в суммы (первый расчёт стандартный if, затем в вите ТЕРНАРНОЙ операции (в одну строку)):
-		public void tb10pk_TextChanged(object sender, EventArgs e)                                   // номинал 10 рублей (купюра)
+		
+		// Описываем обработчик событияй для TextBox tb10pk - событие TextGanged 
+		private void tb10pk_TextChanged(object sender, EventArgs e)																														// номинал 10 рублей (купюра)
 			{
-
-			if (tb10pk.Text != "")
-				{
-				lb10pk.Text = Convert.ToString(Convert.ToInt32(tb10pk.Text) * 10);
-				}
-			else
-				{
-				tb10pk.Text = string.Empty;
-				lb10pk.Text = "0";
-				}
+			// Задаём переменную result типа boolc присваением ей целочисленного значения с преобразованием из строкового в 32х разрядное,
+			// а также сокраoftv на выходе tb10pk в res
+			bool result = int.TryParse(tb10pk.Text, out int res);
+			// Описываем функцию if/else в тернарном виде
+			lb10pk.Text = result ? (res * 10).ToString() : "0";
+			// Обязательно errfrpsdftv ссылку на метод sn(); для подсчёта общей суммы купюр в реальном времени
 			sn();
 			}
-
-		public void tb50p_TextChanged(object sender, EventArgs e)                                   // номинал 50 рублей
+		// Описываем обработчик события для события TextBox tb10pk - события KeyPress 
+		private void tb10pk_KeyPress(object sender, KeyPressEventArgs e)
 			{
-			_ = tb50p.Text != "" ? lb50p.Text = Convert.ToString(Convert.ToInt32(tb50p.Text) * 50) : tb50p.Text = ""; sn();
+			// Условие для ввода только цифр (буквы и знакки пунтуации отключены)
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b') return;
+			// Вывод MessageBox с уведомление о запрете выывода символов кроме цифр -
+			// данное окно уведомлений сделанно как пример, и выводится только для первого TextBox - tb10pk
+			// в последующих Textbox оно упращено и запрет вводв символов кроме цифр ничем не сообщается - тишина, просто не вводятся
+			else
+				{
+				MessageBox.Show("Ввод любых символов кроме цифр - ЗАПРЕЩЁН! Введите число!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				e.Handled = true;
+				}
+			}
+
+		private void tb50p_TextChanged(object sender, EventArgs e)                  // номинал 50 рублей
+			{
+			bool result = int.TryParse(tb50p.Text, out int res);
+			lb50p.Text = result ? (res * 50).ToString() : "0";
+			sn();
+			}
+		private void tb50p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b') 
+					return;
+			else
+				{
+				e.Handled = true;
+				}
 			}
 		
 
-		public void tb100p_TextChanged(object sender, EventArgs e)                                   // номинал 100 рублей
+		private void tb100p_TextChanged(object sender, EventArgs e)                // номинал 100 рублей
 			{
-			_ = tb100p.Text != "" ? lb100p.Text = Convert.ToString(Convert.ToInt32(tb100p.Text) * 100) : tb100p.Text = ""; sn();
+			bool result = int.TryParse(tb100p.Text, out int res);
+				lb100p.Text = result ? (res * 100).ToString() : "0";
+			sn();
+			}
+		private void tb100p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
+			}
+		
+		private void tb200p_TextChanged(object sender, EventArgs e)               // номинал 200 рублей
+			{
+			bool result = int.TryParse(tb200p.Text, out int res);
+			lb200p.Text = result ? (res * 200).ToString() : "0";
+			sn();
+			}
+		private void tb200p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+
+			else
+				{
+				e.Handled = true;
+				}
+			}
+		
+		private void tb500p_TextChanged(object sender, EventArgs e)               // номинал 500 рублей
+			{
+			bool result = int.TryParse(tb500p.Text, out int res);
+			lb500p.Text = result ? (res * 500).ToString() : "0";
+			sn();
+			}
+		private void tb500p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
 			}
 
-		public void tb200p_TextChanged(object sender, EventArgs e)                                   // номинал 200 рублей
+		private void tb1000p_TextChanged(object sender, EventArgs e)               // номинал 1000 рублей
 			{
-			_ = tb200p.Text != "" ? lb200p.Text = Convert.ToString(Convert.ToInt32(tb200p.Text) * 200) : tb200p.Text = ""; sn();
+			bool result = int.TryParse(tb1000p.Text, out int res);
+			lb1000p.Text = result ? (res * 1000).ToString() : "0"; ;
+			sn();
+			}
+		private void tb1000p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
 			}
 
-		public void tb500p_TextChanged(object sender, EventArgs e)                                   // номинал 500 рублей
+		private void tb2000p_TextChanged(object sender, EventArgs e)               // номинал 2000 рублей
 			{
-			_ = tb500p.Text != "" ? lb500p.Text = Convert.ToString(Convert.ToInt32(tb500p.Text) * 500) : tb500p.Text = ""; sn();
+			bool result = int.TryParse(tb2000p.Text, out int res);
+				lb2000p.Text = result ? (res * 2000).ToString() : "0";
+			sn();
+			}
+		private void tb2000p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
+			}
+	
+		private void tb5000p_TextChanged(object sender, EventArgs e)               // номинал 5000 рублей
+			{
+			bool result = int.TryParse(tb5000p.Text, out int res);
+			lb5000p.Text = result ? (res * 5000).ToString() : "0";
+			sn();
+			}
+		private void tb5000p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
+
 			}
 
-		public void tb1000p_TextChanged(object sender, EventArgs e)                                    // номинал 1000 рублей
-			{
-			_ = tb1000p.Text != "" ? lb1000p.Text = Convert.ToString(Convert.ToInt32(tb1000p.Text) * 1000) : tb1000p.Text = ""; sn();
-			}
-
-		public void tb2000p_TextChanged(object sender, EventArgs e)                                    // номинал 2000 рублей
-			{
-			_ = tb2000p.Text != "" ? lb2000p.Text = Convert.ToString(Convert.ToInt32(tb2000p.Text) * 2000) : tb2000p.Text = ""; sn();
-			}
-
-		public void tb5000p_TextChanged(object sender, EventArgs e)                                    // номинал 5000 рублей
-			{
-			_ = tb5000p.Text != "" ? lb5000p.Text = Convert.ToString(Convert.ToInt32(tb5000p.Text) * 5000) : tb5000p.Text = ""; sn();
-			}
-
-		// Общую сумму КУПЮР подсчитываем через метод sn();
-		public void sn()
+	// Общую сумму КУПЮР подсчитываем через метод sn() - орбязательно добавляя на него ссылку в каждый обработчик событие TexBox купюр, иначе общая сумма купюр считаться не будет!;
+	public void sn()
 			{
 			int sn10 = Convert.ToInt32(lb10pk.Text);
 			int sn50 = Convert.ToInt32(lb50p.Text);
@@ -113,31 +204,89 @@ namespace BankSum
 			}
 
 		// Расчет количества МОНЕТ в суммы:
-		private void tb05p_TextChanged(object sender, EventArgs e)                                   // номинал монеты: 0,5 рубля (50 копеек)
+		private void tb05p_TextChanged(object sender, EventArgs e)               // номинал 0,5 копеек
 			{
-			_ = tb05p.Text != "" ? lb05p.Text = Convert.ToString(Convert.ToInt32(tb05p.Text) * 0.5) : tb05p.Text = ""; sm();
+			bool result = int.TryParse(tb05p.Text, out int res);
+			lb05p.Text = result ? (res * 0.5).ToString() : "0";
+			sm();
+			}
+		private void tb05p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
 			}
 
-		private void tb1p_TextChanged(object sender, EventArgs e)                                   // номинал монеты: 1 рубль
+		private void tb1p_textChanged(object sendet, EventArgs e)               // номинал 1 рубль
 			{
-			_ = tb1p.Text != "" ? lb1p.Text = Convert.ToString(Convert.ToInt32(tb1p.Text) * 1) : tb1p.Text = ""; sm();
+			bool result = int.TryParse(tb1p.Text, out int res);
+			lb1p.Text = result ? (res * 1).ToString() : "0";
+			sm();
+			}
+		private void tb1p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+			}
+		}
+
+		private void tb2p_TextChanged(object sender, EventArgs e)               // номинал 2 рубля
+			{
+			bool result = int.TryParse(tb2p.Text, out int res);
+			lb2p.Text = result ? (res * 2).ToString() : "0";
+			sm();
+			}
+		private void tb2p_KeyPress(object sendet, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
+			}
+		
+		private void tb5p_TextChanged(object sender, EventArgs e)               // номинал 5 рублей
+			{
+			bool result = int.TryParse(tb5p.Text, out int res);
+			lb5p.Text = result ? (res * 5).ToString() : "0";
+			sm();
+			}
+		private void tb5p_KeyPress(object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true; ;
+				}
+			}
+		
+
+		private void tb10pm_TextChanged(object sender, EventArgs e)               // номинал 10 рублей
+			{
+			bool result = int.TryParse(tb10pm.Text, out int res);
+			lb10pm.Text = result ? (res * 10).ToString() : "0";
+			sm();
+			}
+		private void tb10pm_KeyPress( object sender, KeyPressEventArgs e)
+			{
+			if (char.IsNumber(e.KeyChar) | e.KeyChar == '\b')
+				return;
+			else
+				{
+				e.Handled = true;
+				}
 			}
 
-		private void tb2p_TextChanged(object sender, EventArgs e)                                  // номинал монеты: 2 рубля
-			{
-			_ = tb2p.Text != "" ? lb2p.Text = Convert.ToString(Convert.ToInt32(tb2p.Text) * 2) : tb2p.Text = ""; sm();
-			}
-
-		private void tb5p_TextChanged(object sender, EventArgs e)                                  // номинал монеты: 5 рублей
-			{
-			_ = tb5p.Text != "" ? lb5p.Text = Convert.ToString(Convert.ToInt32(tb5p.Text) * 5) : tb5p.Text = ""; sm();
-			}
-
-		private void tb10pm_TextChanged(object sender, EventArgs e)                                  // номинал монеты: 10 рублей
-			{
-			_ = tb10pm.Text != "" ? lb10pm.Text = Convert.ToString(Convert.ToInt32(tb10pm.Text) * 10) : tb10pm.Text = ""; sm();
-			}
-
+	
+		
 		// Общую сумму МОНЕТ подсчитываем через метод sm();
 		public void sm()
 			{
@@ -240,5 +389,7 @@ namespace BankSum
 			ToolTip t = new ToolTip();
 			t.SetToolTip(pictureBox1, "YouTube канал Автора");
 			}
+
+		
 		}
 }
